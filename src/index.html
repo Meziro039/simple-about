@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">About</title>
+</head>
+<body>
+    <header>
+        <h1 class="center">About</h1>
+        <nav class="menu">
+            <a href="#home">Home</a>
+            <a href="#works">Works</a>
+            <a href="#follow">Follow</a>
+        </nav>
+    </header>
+
+    <div id="main">
+        <div id="home">
+            <div class="box">
+                <div style="display: flex; gap: 10px; align-items: end;">
+                    <img class="icon" src="./icon.webp" style="width: 60px; border-radius: 50%;">
+                    <h2 style="margin-bottom: 6px;">Name</h2>
+                </div>
+                <p>ABOUT</p>
+            </div>
+        </div>
+
+        <div id="works">
+            <div class="box">
+                <h1 class="flat">Works</h1>
+            </div>
+        </div>
+
+        <div id="follow">
+            <div class="box">
+                <h1 class="flat">Follow</h1>
+                <p>
+                    Twitter: <a href="">@example</a><br>
+                    Misskey: <a href="">@example@example.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="center">
+        <span>&copy;HogeFuga / Template:<a href="https://github.com/meziro039/simple-about">Github</a></span>
+    </footer>
+
+    <style>
+
+        :root {
+            --baseColor: #ffffff;
+            --textColor: #000000;
+            --keyColor: #bbc8d7;
+        }
+
+        * {
+            max-width: 100%;
+            word-break: break-all;
+            box-sizing: border-box;
+            font-family: 'system-ui';
+        }
+
+        body {
+            min-width: 280px;
+        }
+
+        .box {
+            background-color: var(--keyColor);
+            width: 80%;
+            min-height: 200px;
+            margin: 10px auto 10px auto;
+            padding: 16px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .flat {
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(60px,1fr));
+            align-items: center;
+            justify-items: center;
+        }
+
+        a {
+            word-break: keep-all;
+        }
+
+        #home,#works,#follow {
+            display: none;
+        }
+    </style>
+
+    <script>
+        addEventListener("hashchange", () => {
+            pageChange();
+        }, false);
+
+        function pageChange() {
+            const hash = (location.hash).replace(/^#/, "");
+
+            pageSwitch("home", false);
+            pageSwitch("works", false);
+            pageSwitch("follow", false);
+
+            if (hash === "home") {
+                pageSwitch("home", true);
+            } else if (hash === "works") {
+                pageSwitch("works", true);
+            } else if (hash === "follow") {
+                pageSwitch("follow", true);
+            } else {
+                location.hash = "home";
+                pageChange();
+            };
+        };
+
+        function pageSwitch(id, sw) {
+            if (sw) {
+                document.getElementById(id).style.display = "block";
+                document.getElementById("title").textContent = id + "- About";
+            } else {
+                document.getElementById(id).style.display = "none";
+            };
+        };
+
+        pageChange();
+    </script>
+</body>
+</html>
