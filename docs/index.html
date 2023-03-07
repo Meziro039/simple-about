@@ -101,9 +101,7 @@
     </style>
 
     <script>
-        addEventListener("hashchange", () => {
-            pageChange();
-        }, false);
+        addEventListener("hashchange", pageChange, false);
 
         function pageChange() {
             const hash = (location.hash).replace(/^#/, "");
